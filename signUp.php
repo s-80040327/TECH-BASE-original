@@ -26,7 +26,7 @@
    <title>ログイン画面</title>
 　 <meta charset="utf-8">
 　 </head>
-　 <body>
+　 <body bgcolor = "#e6efa" text = "#191970">
 　 <h1>ようこそ、ログインしてください</h1>
    <form action = "login.php" method = "post">
       

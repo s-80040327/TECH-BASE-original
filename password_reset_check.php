@@ -37,9 +37,9 @@
    $stmt->execute();
    $result= $stmt->fetch();
    if(!isset($result)){
-       $errors['account_check']="IDが間違っております";
+       $errors['account_check']="IDまたはメールアドレスが間違っております";
    }else{
-       if($result['mail']==$mail_post){
+       if($result['mail']!="" && $result['mail']==$mail_post){
            $message="変更後のパスワードを入力してください";
            $_SESSION['account'] = $account; 
        }else{
@@ -54,7 +54,7 @@
    <title>password変更画面</title>
    <meta charset="utf-8">
    </head>
-   <body>
+   <body bgcolor = "#e6efa" text = "#191970">
    <h1>パスワード再設定</h1>
 
    <?php if (count($errors) === 0): ?>
@@ -74,7 +74,7 @@
 	      echo "<p>".$value."</p>"; 
       }
    ?>
-
+   <input type="button" value="戻る" onClick="history.back()">
    <?php endif; ?>
 
    </body>

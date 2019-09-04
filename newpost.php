@@ -84,6 +84,7 @@
           $stmt -> bindParam(':date', $date_show, PDO::PARAM_STR);
           $stmt -> execute();
           header("Location: postslist.php");
+          exit();
       }
     }
     catch(PDOException $e){
