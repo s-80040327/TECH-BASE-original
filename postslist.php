@@ -75,7 +75,7 @@
 	                ."id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                   ."account VARCHAR(50) NOT NULL," 
                   ."comment TEXT,"
-                  ."fname VARCHAR(50),"
+                  ."fname VARCHAR(500),"
                   ."extension VARCHAR(5),"
                   ."raw_data MEDIUMBLOB,"
                   ."datetime DATETIME"
@@ -114,6 +114,7 @@
      
 ?>
      <a href = "newpost.php">新規投稿</a><br>
+     <a href = "deletepost.php">投稿削除</a><br>
      <a href ="logout.php" >ログアウト</a>
       
  </body>
