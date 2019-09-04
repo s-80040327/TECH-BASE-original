@@ -110,7 +110,7 @@
                <input type="hidden" name="token" value="<?=$token?>">
                <input type="submit" value="アップロード">
     </form>
-
+    <p><a href="postslist.php">投稿一覧画面</a></p>
     
 </body>
 </html>

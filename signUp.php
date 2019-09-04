@@ -14,7 +14,7 @@
    $pdo = db_connect();
 
    if (isset($_SESSION['account'])){
-       echo "ようこそ".＄_SESSION['account']."さん<br>";
+       echo "ようこそ".$_SESSION['account']."さん<br>";
        echo "<a href='logout.php'>ログアウトはこちら</a>";
        exit; //メッセージを出力して現在のプログラムを終了する
    }
