@@ -61,6 +61,8 @@
                $extension = "gif";
             }elseif($extension === "mp4" || $extension === "MP4"){
                $extension = "mp4";
+            }elseif($extension === "mov" || $extension === "MOV"){
+               $extension = "mov";
             }else{
                echo "非対応ファイルです．<br/>";
                echo ("<a href=\"newpost.php\">戻る</a><br/>");
@@ -106,7 +108,7 @@
     <form action="newpost.php" enctype="multipart/form-data" method="post">
     コメント　：<textarea name="comment" rows = "3" cols = "19"></textarea><br>
     画像・動画: <input type="file" name="upfile"><br>
-        ※画像はjpeg方式，png方式，gif方式に対応しています．動画はmp4方式のみ対応しています．<br>
+        ※画像はjpeg方式，png方式，gif方式に対応しています．動画はmp4方式、MOV方式のみ対応しています．ファイルサイズは2MBまでです<br>
                <input type="hidden" name="token" value="<?=$token?>">
                <input type="submit" value="アップロード">
     </form>
