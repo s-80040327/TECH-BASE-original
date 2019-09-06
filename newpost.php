@@ -87,9 +87,9 @@
           exit();
       }
     }
-    catch(PDOException $e){
-        echo("<p>500 Inertnal Server Error</p>");
-        exit($e->getMessage());
+    catch(RuntimeException $e){
+        echo ("<a href=\"newpost.php\">戻る</a><br/>");
+        exit($e->getMessage());  
     }
 ?>
 
