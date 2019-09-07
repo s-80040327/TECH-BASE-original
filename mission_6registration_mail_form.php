@@ -28,6 +28,7 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <link rel=stylesheet type="text/css" href="fontstyle.css">  
       <title>mission_6-2</title>
    </head>
    <body bgcolor = "#e6efa" text = "#191970">
