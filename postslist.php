@@ -1,11 +1,12 @@
 <html>
 	<head>
   <meta charset="utf-8">
+  <link rel=stylesheet type="text/css" href="fontstyle.css">  
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 	<title>postslist</title>
 	</head>
-	<body bgcolor = "#e6e6fa" text = "#191970" >
-		<font size = "6" color = "#4b0082" >みんなの投稿</font><br><br>
+	<body bgcolor = "#e6efa" text = "#191970" >
+		<h1><font size = "6" color = "#4b0082" >みんなの投稿</font><br><br></h1>
 
     <div class="scroll_botton">
         <a id="demo_scroll_top" herf="#">ページtopへ戻る</a>
@@ -99,10 +100,10 @@
            if($row["fname"]!=""){
               //動画と画像で場合分け
               $target = $row["fname"];
-              if($row["extension"] == "mp4"){
+              if($row["extension"] == "mp4" ||$row["extension"] == "mov"){
                  echo "<video src=\"import_media.php?target=$target\" width=\"426\" height=\"240\" controls></video>";
               }elseif($row["extension"] == "jpeg" || $row["extension"] == "png" || $row["extension"] == "gif"){
-                 echo "<img src='import_media.php?target=$target'>";
+                 echo "<img src='import_media.php?target=$target'width='426' controls>";
               }
            }
            echo "<br/><br/>";
