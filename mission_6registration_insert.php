@@ -121,6 +121,8 @@
 <head>
 <title>会員登録完了画面</title>
 <meta charset="utf-8">
+<link rel=stylesheet type="text/css" href="fontstyle.css"> 
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">  
 </head>
 <body bgcolor = "#e6efa" text = "#191970">
  
@@ -129,8 +131,7 @@
 <h1>会員登録完了画面</h1>
 <p><?=$message?></p>
 <p>登録完了いたしました。ログイン画面からどうぞ。</p>
-    <a href ="postslist.php" target="_blank">投稿一覧はこちら</a>
-<p><a href="signUp.php">ログイン画面</a></p>
+<p><i class="fa fa-sign-in-alt"></i><a href="signUp.php">ログイン画面</a></p>
  
 <?php elseif(count($errors) > 0): ?>
  

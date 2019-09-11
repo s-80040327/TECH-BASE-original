@@ -4,7 +4,9 @@ session_start();
 header("Content-type: text/html; charset=utf-8");
 
 //クロスサイトリクエストフォージェリ（CSRF）対策
-$_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
+if(isset($_SESSION['token'])){
+   $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
+}
 $token = $_SESSION['token'];
 
 //クリックジャッキング対策
@@ -17,12 +19,12 @@ $pdo = db_connect();
 //エラーメッセージの初期化
 $errors = array();
 
-if(empty($_GET)) {
+if(empty($_SESSION['urltoken'])) {
 	header("Location: mission_6registration_mail_form.php");
 	exit();
 }else{
 	//GETデータを変数に入れる
-	$urltoken = isset($_GET['urltoken']) ? $_GET['urltoken'] : NULL;
+	$urltoken = isset($_SESSION['urltoken']) ? $_SESSION['urltoken'] : NULL;
 	//メール入力判定
 	if ($urltoken == ''){
 		$errors['urltoken'] = "もう一度登録をやりなおして下さい。";
@@ -65,21 +67,34 @@ if(empty($_GET)) {
    <head>
    <title>会員登録画面</title>
    <meta charset="utf-8">
+   <link rel=stylesheet type="text/css" href="fontstyle.css">  
+   <link rel=stylesheet type="text/css" href="submit_bottom.css">
+   <link rel=stylesheet type="text/css" href="text_box.css">  
+   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
    </head>
-   <body>
-   <h1>会員登録画面</h1>
+   <body bgcolor="#e6efa" text="#191970">
+   <h1><font size = "6" color = "#4b0082" >会員登録画面</font></h1>
 
    <?php if (count($errors) === 0): ?>
 
       <form action="mission_6registration_check.php" method="post">
 
-         <p>メールアドレス：<?=htmlspecialchars($mail, ENT_QUOTES, 'UTF-8')?></p>
-         <p>アカウント名：<input type="text" name="account"></p>
-         <p>パスワード：<input type="password" name="password"></p>
- 
+		 <p><div style="margin-left:45px">
+	     <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i> 
+		 <?=htmlspecialchars($mail, ENT_QUOTES, 'UTF-8')?>
+		</div></p>
+		 <p><div class="cp_iptxt">
+		  <input type="text" name="account" placeholder="アカウント名">
+	      <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+         </div></p>
+         <p><div class="cp_ippass">
+         <input type="password" name="password" placeholder="password">
+		 <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
+         </div></p>
+		 <div style="margin-left:45px">
          <input type="hidden" name="token" value="<?=$token?>">
-         <input type="submit" value="確認する">
- 
+         <input type="submit" class="btn" id="orange_btn" value="確認する">
+         </div>
       </form>
  
    <?php elseif(count($errors) > 0): ?>

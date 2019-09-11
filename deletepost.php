@@ -66,6 +66,10 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <link rel=stylesheet type="text/css" href="fontstyle.css">
+    <link rel=stylesheet type="text/css" href="submit_bottom.css">
+    <link rel=stylesheet type="text/css" href="text_box.css">  
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">  
     <title>media</title>
 </head>
 <body bgcolor = "#e6efa" text = "#191970">
@@ -74,20 +78,30 @@
     <p><?=$message?></p>
      
 <?php elseif(count($errors) > 0): ?>
+    <h1><font color = "#4b0082">削除</font><br></h1>
 <?php
     foreach($errors as $value){
         echo "<p>".$value."</p>";
     }
 ?>
-    <font size = "4" color = "#4b0082">削除用</font><br>
     <form action="deletepost.php" enctype="multipart/form-data" method="post">
-    削除番号　：<input type="text" name="delete" size="2"><br>
-    パスワード: <input type="password" name="password" size="20"><br>
-               <input type="hidden" name="token" value="<?=$token?>">
-               <input type="submit" value="削除">
+    <p><div class="cp_iptxt">
+       <input type="text" name="delete" placeholder="投稿番号">
+       <i class="fa fa-sort-numeric-down fa-lg fa-fw" aria-hidden="true"></i>
+    </div></p>
+    <p><div class="cp_ippass">
+	 <input type="password" name="password" placeholder="password">
+	 <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
+    </div></p>
+    <div style="margin-left:40px">
+       <input type="hidden" name="token" value="<?=$token?>">
+       <input type="submit" class="btn" id="orange_btn" value="削除">
+    </div>
     </form>
     <?php endif; ?>
-    <p><a href="postslist.php">投稿一覧画面</a></p>
+    <div style="margin-left:40px"> 
+    <p><i class="fa fa-list-alt"></i> <a href="postslist.php">投稿一覧画面</a></p>
+   </div>
     
 </body>
 </html>

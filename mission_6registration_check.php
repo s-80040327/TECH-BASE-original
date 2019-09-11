@@ -94,6 +94,9 @@
    <head>
    <title>会員登録確認画面</title>
    <meta charset="utf-8">
+   <link rel=stylesheet type="text/css" href="fontstyle.css"> 
+   <link rel=stylesheet type="text/css" href="submit_bottom.css">
+   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> 
    </head>
    <body bgcolor = "#e6efa" text = "#191970">
    <h1>会員登録確認画面</h1>
@@ -101,15 +104,16 @@
    <?php if (count($errors) === 0): ?>
 
       <form action="mission_6registration_insert.php" method="post">
+      
+      <div style="margin-left:45px">
+        <p><i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i> <?=htmlspecialchars($_SESSION['mail'], ENT_QUOTES)?></p>
+        <p><i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i><?=htmlspecialchars($account, ENT_QUOTES)?></p>
+        <p><i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i><?=$password_hide?></p>
 
-        <p>メールアドレス：<?=htmlspecialchars($_SESSION['mail'], ENT_QUOTES)?></p>
-        <p>アカウント名：<?=htmlspecialchars($account, ENT_QUOTES)?></p>
-        <p>パスワード：<?=$password_hide?></p>
-
-        <input type="button" value="戻る" onClick="history.back()">　　<?php //クリックしたらhistory.back()関数(前のページへ戻る)を呼び出す?>
-        <input type="hidden" name="token" value="<?=$_POST['token']?>">
-        <input type="submit" value="登録する">
-
+        <input type="button" class="btn" id="dark_btn" value="戻る" onClick="history.back()">　　<?php //クリックしたらhistory.back()関数(前のページへ戻る)を呼び出す?>
+        <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
+        <input type="submit" class="btn" id="orange_btn" value="登録する">
+      </div>
       </form>
 
    <?php elseif(count($errors) > 0): ?>

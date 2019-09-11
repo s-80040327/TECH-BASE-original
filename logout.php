@@ -22,11 +22,13 @@
 <html>
     <head>
        <meta charset="utf-8">
+       <link rel=stylesheet type="text/css" href="fontstyle.css"> 
+       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> 
        <title>logout</title>
     </head>
     <body bgcolor = "#e6efa" text = "#191970">
- 
+    <h1>ログアウト完了画面</h1>
     <p><?=$message?></p>
-    <a href ="signUp.php">ログインはこちら</a>
+    <i class="fa fa-sign-in-alt"></i><a href ="signUp.php">ログインはこちら</a>
    </body>
 </html>

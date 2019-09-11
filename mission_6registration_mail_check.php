@@ -6,7 +6,7 @@
 	  //エラーメッセージの初期化
 	  $errors = array();
 
-	  //クロスサイトリクエストフォージェリ（CSRF）対策のトークン判定
+     //クロスサイトリクエストフォージェリ（CSRF）対策のトークン判定
       if ($_POST['token'] != $_SESSION['token']){
         $errors['access_check'] = "不正アクセスの可能性あり";
         exit();
@@ -72,7 +72,7 @@
       if (count($errors) === 0){
 	
 	  $urltoken = hash('sha256',uniqid(rand(),1));
-	  $url = "https://tb-210188.tech-base.net/mission_6registration_form.php"."?urltoken=".$urltoken; //「?urltoken=」とすることでGETメソッドによりトークンを取得できる。
+	  $url = "https://tb-210188.tech-base.net/TECH-BASEhomepage2.php"."?urltoken=".$urltoken; //「?urltoken=」とすることでGETメソッドによりトークンを取得できる。
 	
 	  //ここでデータベースに登録する
 	  try{
@@ -147,7 +147,9 @@
    <html>
    <head>
       <meta charset="utf-8">
-      <title>mission_6registration_mail_form</title>
+      <link rel=stylesheet type="text/css" href="fontstyle.css">  
+      <link rel=stylesheet type="text/css" href="submit_bottom.css">  
+      <title>mission_6registration_mail_check</title>
    </head>
    <body bgcolor = "#e6efa" text = "#191970">
 
@@ -157,9 +159,6 @@
  
    <p><?=$message?></p>
  
-   <p>↓このURLが記載されたメールが届きます。</p>
-   <a href="<?=$url?>"><?=$url?></a> 
- 
    <?php elseif(count($errors) > 0): ?>
  
    <?php
@@ -168,7 +167,7 @@
     }
    ?>
  
-   <input type="button" value="戻る" onClick="history.back()">
+   <input type="button" class="btn" id="dark_btn" value="戻る" onClick="history.back()">
  
    <?php endif; ?>
  

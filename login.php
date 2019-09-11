@@ -69,25 +69,40 @@
 <html>
     <head>
        <meta charset="utf-8">
+       <link rel=stylesheet type="text/css" href="fontstyle.css">
+       <link rel=stylesheet type="text/css" href="submit_bottom.css">
+       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
        <title>login</title>
     </head>
     <body bgcolor = "#e6efa" text = "#191970">
  
     
     <?php if (count($errors) === 0): ?>
-    <h1>ログイン完了画面</h1>
-    <p><?=$message?></p>
-    <a href = "postslist.php">投稿一覧はこちら</a>
- 
+    <h1>ようこそひとこと日記へ</h1>
+    <div style="margin-left:40px">
+      <p><?=$message?></p>
+    </div>
+    <div style="margin-left:40px">
+      <i class="fa fa-list-alt"></i> 
+      <a href = "postslist.php">投稿一覧はこちら</a>
+    </div>
    <?php elseif(count($errors) > 0): ?>
    <h1>ログイン失敗</h1>
-   <?php
-      foreach($errors as $value){
-	    echo "<p>".$value."</p>";
-    }
-   ?>
-   <input type="button" value="戻る" onClick="history.back()">
-   <a href ="password_reset.php">passwordを忘れた場合はこちら</a>  
+   <div style="margin-left:40px">
+     <?php
+        foreach($errors as $value){
+	      echo "<p>".$value."</p>";
+        }
+     ?>
+   </div>
+   <div style="margin-left:40px">
+     <i class="fa fa-user-edit"></i> 
+     <a href ="password_reset.php">passwordを忘れた場合はこちら</a>  
+   </div>
+   <div style="margin-left:40px">
+     <input type="button" class="btn" id="dark_btn" value="戻る" onClick="history.back()">
+   </div>
+   
    <?php endif; ?>
 
    </body>

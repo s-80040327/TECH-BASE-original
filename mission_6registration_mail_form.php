@@ -3,7 +3,6 @@
     header("content-type: text/html; charset=utf-8"); //何してるのか微妙
 
    //クロスサイトリクエストフォージェリ（CSRF）対策
-   $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
    $token = $_SESSION['token'];
  
    //クリックジャッキング対策
@@ -28,19 +27,27 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <link rel=stylesheet type="text/css" href="fontstyle.css">  
+      <link rel=stylesheet type="text/css" href="fontstyle.css"> 
+      <link rel=stylesheet type="text/css" href="submit_bottom.css">
+      <link rel=stylesheet type="text/css" href="text_box.css">  
+      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> 
       <title>mission_6-2</title>
    </head>
    <body bgcolor = "#e6efa" text = "#191970">
    <h1>メール登録画面</h1>
  
    <form action="mission_6registration_mail_check.php" method="post">
- 
-   <p>メールアドレス：<input type="text" name="mail" size="50"></p>
- 
-   <input type="hidden" name="token" value="<?=$token?>">
-   <input type="submit" value="登録する">
- 
+   
+   <p><div class="cp_iptxt">
+         <input type="text" name="mail" placeholder="mail">
+         <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+      </div></p>
+
+<div style="margin-left:40px">
+    <input type="button" class="btn" id="dark_btn" value="戻る" onClick="history.back()">　　
+    <input type="hidden" name="token" value="<?=$token?>">
+    <input type="submit" class="btn" id="orange_btn" value="登録する">
+</div>
    </form>
    </body>
 </html>

@@ -1,64 +1,44 @@
+<!DOCTYPE HTML>
+
+<html lang="ja">
 <html>
-	<head>
-  <meta charset="utf-8">
-  <link rel=stylesheet type="text/css" href="fontstyle.css">  
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-	<title>postslist</title>
+<head>
+  <meta charset="utf-8">  
+  <title>postslist</title>
+  <link rel="stylesheet" type="text/css" href="postlist.css">  
+  <link rel="stylesheet" type="text/css" href="fontstyle.css">  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link rel="stylesheet" type="text/css" href="scroll_bottom.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    jQuery(function() {
+       var pagetop = $('#page_top');    
+       pagetop.hide();
+       $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {  //100pxスクロールしたら表示
+            pagetop.fadeIn();
+          } else {
+            pagetop.fadeOut();
+          }
+       });
+       pagetop.click(function () {
+          $('body,html').animate({
+             scrollTop: 0
+          }, 500); //0.5秒かけてトップへ移動
+          return false;
+       });
+    });
+    </script>
 	</head>
 	<body bgcolor = "#e6efa" text = "#191970" >
 		<h1><font size = "6" color = "#4b0082" >みんなの投稿</font><br><br></h1>
-
-    <div class="scroll_botton">
-        <a id="demo_scroll_top" herf="#">ページtopへ戻る</a>
-      </div>
-     <style type="text/css">
-      #pagejump_demo .scroll_button a{
-      position: fixed;
-      display: block;
-      right:50px;
-      bottom:50px;
-      background: #313131;
-      color:#fff;
-      padding:20px;
-      }
-      </style>
-      <script type="text/javascript">
-      $(function(){
-         $("a#demo_scroll_top[href^=#]").click(function(){
-           var speed = 1200;
-           var href = $(this).attr("href");
-           var target = $(href == "#" || href == ""?"html" : href);
-           var position = target.offset().top;
-
-           $("body, html").animate({scrollTop:position}, speed, "swing");
-           return false;
-         });
-      });
-      </script>
-    <div class="scroll_botton_btm">
-        <a href="#page-bottom">ページの一番下へ</a>
-    </div>
-    <style type="text/css">
-    #pagejump_demo .scroll_button_btm a{
-    position: fixed;
-    display: block;
-    right:50px;
-    top:50px;
-    background: #313131;
-    color:#fff;
-    padding:20px;
-    }
-    </style>
-    <script type="text/javascript">
-    $(function(){
-      $("a[href^=#page-bottom]").click(function(){
-        $('html, body').animate({
-          scrollTop: $(document).height()
-        },1500);
-        return false;
-      });
-    });
-    </script>
+   <ul>
+     <li><i class="fa fa-mail-bulk fa-lg fa-fw"></i><a href = "newpost.php">今日のひとこと</a></li>
+     <li><i class="fa fa-trash-alt fa-lg fa-fw"></i><a href = "deletepost.php">間違えたとき</a></li>
+     <li><i class="fa fa-sign-out-alt fa-lg fa-fw"></i><a href ="logout.php" >ログアウト</a><li>
+   </ul>
+   
  <?php
       session_start();
       header("Content-type: text/html; charset=utf-8");
@@ -89,11 +69,18 @@
       $sql = "SELECT * FROM poststable ORDER BY id;";
       $stmt = $pdo->query($sql);
       $results = $stmt->fetchall();
-        if(count($results)!=0){
-          foreach($results as $row){
-           echo $row['id'].',';
-           echo $row["account"].',';
-           echo $row["datetime"]."<br/>";
+      ?>
+        <?php if(count($results)!=0):?>
+          <?php foreach($results as $row):?>
+          
+          <div id="postlist">
+           <div class="num"><?php echo $row['id'];?></div>
+          <div class="fusen" style="padding-left: 60px;">
+          <ul>
+           <li>
+           <?php echo $row["account"]."<br/>";
+           $submittime = new DateTime($row['datetime']);
+           echo $submittime->format('Y年m月d日 H時i分s秒')."<br/>";
            if($row["comment"]!=""){
              echo $row["comment"]."<br/>";
            }
@@ -106,18 +93,22 @@
                  echo "<img src='import_media.php?target=$target'width='426' controls>";
               }
            }
-           echo "<br/><br/>";
-           echo "<hr>";
-          }
-        }else{
-          echo "投稿はありません<br/>";
-        }
+           echo "<br/><br/>";?>
+           </li>
+           </ul>
+         </div>
+         </div>
+          <?php endforeach; ?>
+                 
+          <?php else:?>
+          <?php echo "投稿はありません<br/>";?>
+          <?php endif; ?> 
      
-?>
-     <a href = "newpost.php">新規投稿</a><br>
-     <a href = "deletepost.php">投稿削除</a><br>
-     <a href ="logout.php" >ログアウト</a>
-      
+     
+     <div id="page_top"><a href="#"></a></div>
+     <!-- トップに戻るボタン -->
+<div id="page-top" class="blogicon-chevron-up"></div>
+
  </body>
 </html>
 

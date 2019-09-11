@@ -1,8 +1,11 @@
 @font-face {
     font-family: MyWebFont;
-    src: url('uzura.ttf') format("truetype");
+    src: url('uzura.ttf') format("TrueType");
  }
  h1 {
+    font-family: MyWebFont;
+ }
+ .fusen{
     font-family: MyWebFont;
  }
  

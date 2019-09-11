@@ -53,6 +53,10 @@
    <head>
    <title>password変更画面</title>
    <meta charset="utf-8">
+   <link rel=stylesheet type="text/css" href="fontstyle.css">  
+   <link rel=stylesheet type="text/css" href="submit_bottom.css">
+   <link rel=stylesheet type="text/css" href="text_box.css">  
+   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
    </head>
    <body bgcolor = "#e6efa" text = "#191970">
    <h1>パスワード再設定</h1>
@@ -60,21 +64,28 @@
    <?php if (count($errors) === 0): ?>
    <p><?=$message?></p>
       <form action="password_reset_insert.php" method="post">
-         <p>パスワード：<input type="password" name="password"></p>
- 
+      <p><div class="cp_ippass">
+         <input type="password" name="password" placeholder="password">
+         <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
+      </div></p>
+      <div style="margin-left:40px">
          <input type="hidden" name="token" value="<?=$token?>">
-         <input type="submit" value="変更する">
+         <input type="submit" class="btn" id="orange_btn" value="変更する">
+      </div>
  
       </form>
  
    <?php elseif(count($errors) > 0): ?>
-
+   <div style="margin-left:40px">
    <?php
       foreach($errors as $value){
 	      echo "<p>".$value."</p>"; 
       }
    ?>
-   <input type="button" value="戻る" onClick="history.back()">
+   </div>
+   <div style="margin-left:40px">
+   <input type="button" class="btn" id="dark_btn" value="戻る" onClick="history.back()">
+   </div>
    <?php endif; ?>
 
    </body>

@@ -1,0 +1,119 @@
+.cp_iptxt {
+	position: relative;
+	width: 27.33%;
+    margin: 40px 3%;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+    border: 0;
+    background-color: transparent;
+}
+.cp_iptxt input[type='text']:focus {
+	outline: none;
+}
+.cp_iptxt input[type='text']:focus::after {
+	outline: none;
+}
+.cp_iptxt i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_iptxt::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #da3c41;
+}
+
+.cp_ippass {
+	position: relative;
+	width: 27.33%;
+    margin: 40px 3%;
+}
+.cp_ippass input[type='password'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+    border: 0;
+    background-color: transparent;
+}
+.cp_ippass input[type='password']:focus {
+	outline: none;
+}
+.cp_ippass input[type='password']:focus::after {
+	outline: none;
+}
+.cp_ippass i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_ippass::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #da3c41;
+}
+
+.cp_ipfile {
+	position: relative;
+	width: 27.33%;
+    margin: 40px 3%;
+}
+.cp_ipfile input[type='file'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+    border: 0;
+    background-color: transparent;
+}
+.cp_ipfile input[type='file']:focus {
+	outline: none;
+}
+.cp_ipfile input[type='file']:focus::after {
+	outline: none;
+}
+.cp_ipfile i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_ipfile::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #da3c41;
+}

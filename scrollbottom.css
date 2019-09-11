@@ -1,0 +1,13 @@
+#page-top {
+    font-size: 0;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    opacity: 0;
+}
+#page-top.fade-in {
+    color: #000;
+    font-size: 60px;
+    opacity: 0.6;
+    transition: opacity 1s;
+}

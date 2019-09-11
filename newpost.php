@@ -19,9 +19,9 @@
       $errors = array();
 
       if((!isset($_POST["comment"]))){          //最初にページを開いたときの指示
-         echo "入力してください。<br>";
+         $errors['kuran']="入力してください。";
       }elseif($_POST["comment"]==="" && $_FILES["upfile"]["name"] === ""){
-         echo "入力してください。<br>";
+         $errors['kuran']="入力してください。";
       }else{
          $fname="";
          $extension="";
@@ -100,19 +100,40 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <link rel=stylesheet type="text/css" href="fontstyle.css">  
+    <link rel=stylesheet type="text/css" href="submit_bottom.css">
+    <link rel=stylesheet type="text/css" href="text_box.css">  
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <title>media</title>
 </head>
 
 <body bgcolor = "#e6efa" text = "#191970">
-    <font size = "4" color = "#4b0082">送信用</font><br>
+    <h1><font color = "#4b0082">新規投稿</font><br></h1>
+    <?php if(count($errors) > 0){
+    foreach($errors as $value){
+        echo "<p>".$value."</p>";
+    }
+   }
+    ?>
     <form action="newpost.php" enctype="multipart/form-data" method="post">
-    コメント　：<textarea name="comment" rows = "3" cols = "19"></textarea><br>
-    画像・動画: <input type="file" name="upfile"><br>
+    <p><div class="cp_iptxt">
+         <input type="text" name="comment" size="50" placeholder="comment">
+         <i class="fa fa-comments fa-lg fa-fw" aria-hidden="true"></i>
+      </div>
+   </p>
+   <p><div class="cp_ipfile" style="margin-left:40px">
+         <input type="file" name="upfile" placeholder="picture/movie">
+         <i class="fa fa-file-import fa-lg fa-fw" aria-hidden="true"></i>
+      </div>
+   </p>
+   <div style="margin-left:40px">
         ※画像はjpeg方式，png方式，gif方式に対応しています．動画はmp4方式、MOV方式のみ対応しています．ファイルサイズは2MBまでです<br>
                <input type="hidden" name="token" value="<?=$token?>">
-               <input type="submit" value="アップロード">
+               <input type="submit" class="btn" id="orange_btn" value="アップロード">
+   </div>
     </form>
-    <p><a href="postslist.php">投稿一覧画面</a></p>
-    
+    <div style="margin-left:40px"> 
+    <p><i class="fa fa-list-alt"></i> <a href="postslist.php">投稿一覧画面</a></p>
+   </div>
 </body>
 </html>

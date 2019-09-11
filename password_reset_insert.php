@@ -77,6 +77,8 @@
     <head>
     <title>password変更完了画面</title>
     <meta charset="utf-8">
+    <link rel=stylesheet type="text/css" href="fontstyle.css"> 
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </head>
     <body bgcolor = "#e6efa" text = "#191970">
      
@@ -85,7 +87,8 @@
     <h1>パスワード変更完了完了画面</h1>
     <p><?=$message?></p>
     <p>変更完了いたしました。ログイン画面からどうぞ。</p>
-    <p><a href="signUp.php">ログイン画面</a></p>
+    <p><i class="fa fa-sign-in-alt"></i> 
+       <a href="signUp.php">ログイン画面</a></p>
      
     <?php elseif(count($errors) > 0): ?>
      
